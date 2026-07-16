@@ -1,0 +1,9 @@
+streamlit>=1.40.0
+openai-whisper>=20250625
+torch>=2.3.0
+numpy>=1.26.0
+pandas>=2.2.0
+requests>=2.32.0
+joblib>=1.4.0
+faiss-cpu>=1.8.0
+ffmpeg-python>=0.2.0
