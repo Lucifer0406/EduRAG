@@ -11,25 +11,72 @@ pipeline from scratch using Whisper, FAISS, Ollama, and Streamlit.
 > Upload your lectures, build a local knowledge base, and ask questions
 > about the content without relying on cloud APIs.
 
-------------------------------------------------------------------------
+---
+
+# 📸 Application Preview
+
+## 🏠 Home Screen
+
+The main interface allows users to upload educational videos, choose how the knowledge base should be updated, and chat with the generated AI teaching assistant.
+
+![Home Screen](assets/home.png)
+
+---
+
+## ⚙️ Building the Knowledge Base
+
+EduRAG supports two database update strategies:
+
+- **Append to Existing Database** – Add new videos while preserving the current knowledge base.
+- **Wipe and Start Fresh** – Remove the previous database and rebuild everything from scratch, preventing stale embeddings.
+
+During processing, EduRAG:
+
+- Extracts audio from uploaded videos
+- Generates transcripts using Whisper
+- Chunks transcript data
+- Creates embeddings
+- Builds a FAISS vector index
+
+![Knowledge Base Build](assets/upload_pipeline.png)
+
+---
+
+## 💬 Ask Questions About Your Videos
+
+Once indexing is complete, users can ask natural language questions about the uploaded educational content.
+
+EduRAG retrieves the most relevant transcript chunks using semantic search and generates grounded answers with a local LLM.
+
+![Question Answering](assets/qa_demo.png)
+
+---
+
+## 🔄 Fresh Database Rebuild
+
+When starting a completely new collection, users can rebuild the knowledge base from scratch. This removes previous vectors and metadata, ensuring that responses are generated only from the newly uploaded videos.
+
+![Fresh Database](assets/rebuild_database.png)
+
+---
 
 # Features
 
--   🎥 Upload one or more educational videos
--   🎙️ Automatically extract audio using FFmpeg
--   📝 Generate transcripts using OpenAI Whisper
--   ✂️ Merge transcript segments into larger contextual chunks
--   🧠 Generate embeddings locally using Ollama (`bge-m3`)
--   ⚡ Fast semantic search using FAISS
--   🤖 Answer questions locally with Llama 3.2 through Ollama
--   💻 Interactive Streamlit interface
--   🔒 Completely offline after installing the required models
+- 🎥 Upload one or more educational videos
+- 🎙️ Automatically extract audio using FFmpeg
+- 📝 Generate transcripts using OpenAI Whisper
+- ✂️ Merge transcript segments into larger contextual chunks
+- 🧠 Generate embeddings locally using Ollama (`bge-m3`)
+- ⚡ Fast semantic search using FAISS
+- 🤖 Answer questions locally with Llama 3.2 through Ollama
+- 💻 Interactive Streamlit interface
+- 🔒 Completely offline after installing the required models
 
-------------------------------------------------------------------------
+---
 
 # Architecture
 
-``` text
+```text
 Educational Videos
         │
         ▼
@@ -60,35 +107,35 @@ Llama 3.2 (Ollama)
 Answer
 ```
 
-------------------------------------------------------------------------
+---
 
 # Tech Stack
 
--   Python
--   Streamlit
--   OpenAI Whisper
--   Ollama
--   Llama 3.2
--   bge-m3 Embedding Model
--   FAISS
--   Pandas
--   NumPy
--   FFmpeg
+- Python
+- Streamlit
+- OpenAI Whisper
+- Ollama
+- Llama 3.2
+- bge-m3 Embedding Model
+- FAISS
+- Pandas
+- NumPy
+- FFmpeg
 
-------------------------------------------------------------------------
+---
 
 # Installation
 
 ## 1. Clone the repository
 
-``` bash
+```bash
 git clone https://github.com/<your-username>/EduRAG.git
 cd EduRAG
 ```
 
 ## 2. Install dependencies
 
-``` bash
+```bash
 pip install -r requirements.txt
 ```
 
@@ -102,12 +149,12 @@ Download and install Ollama.
 
 Pull the required models:
 
-``` bash
+```bash
 ollama pull llama3.2
 ollama pull bge-m3
 ```
 
-------------------------------------------------------------------------
+---
 
 # Running EduRAG
 
@@ -115,11 +162,11 @@ Start Ollama.
 
 Then launch the application:
 
-``` bash
+```bash
 streamlit run app.py
 ```
 
-------------------------------------------------------------------------
+---
 
 # How It Works
 
@@ -133,11 +180,11 @@ streamlit run app.py
 7.  The most relevant transcript chunks are retrieved.
 8.  Llama 3.2 generates an answer using only the retrieved context.
 
-------------------------------------------------------------------------
+---
 
 # Project Structure
 
-``` text
+```text
 EduRAG/
 │
 ├── app.py
@@ -155,32 +202,32 @@ EduRAG/
 └── LICENSE
 ```
 
-------------------------------------------------------------------------
+---
 
 # Current Capabilities
 
--   Generic video ingestion pipeline
--   Local transcription
--   Local embedding generation
--   Semantic retrieval using FAISS
--   Local LLM inference
--   Multiple video support
--   Append or rebuild knowledge base
+- Generic video ingestion pipeline
+- Local transcription
+- Local embedding generation
+- Semantic retrieval using FAISS
+- Local LLM inference
+- Multiple video support
+- Append or rebuild knowledge base
 
-------------------------------------------------------------------------
+---
 
 # Planned Improvements
 
--   Incremental indexing (embed only newly added videos)
--   Better semantic chunking
--   Configurable models through a config file
--   Source citations with confidence scores
--   Streaming responses
--   Docker support
--   Multi-language retrieval
--   Conversation memory
+- Incremental indexing (embed only newly added videos)
+- Better semantic chunking
+- Configurable models through a config file
+- Source citations with confidence scores
+- Streaming responses
+- Docker support
+- Multi-language retrieval
+- Conversation memory
 
-------------------------------------------------------------------------
+---
 
 # Notes
 
@@ -196,7 +243,7 @@ To build your own knowledge base:
 The repository demonstrates a reusable RAG pipeline rather than
 distributing third-party course content.
 
-------------------------------------------------------------------------
+---
 
 # License
 
