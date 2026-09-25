@@ -150,6 +150,7 @@ Download and install Ollama.
 Pull the required models:
 
 ```bash
+curl -fsSL https://ollama.com/install.sh | sh
 ollama pull llama3.2
 ollama pull bge-m3
 ```
