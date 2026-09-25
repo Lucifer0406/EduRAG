@@ -129,7 +129,7 @@ Answer
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/EduRAG.git
+git clone https://github.com/Lucifer0406/EduRAG.git
 cd EduRAG
 ```
 
@@ -141,7 +141,7 @@ pip install -r requirements.txt
 
 ## 3. Install FFmpeg
 
-Make sure `ffmpeg` is available from your terminal.
+Make sure `FFmpeg` is available from your terminal.
 
 ## 4. Install Ollama
 
@@ -172,7 +172,7 @@ streamlit run app.py
 
 1.  Upload educational videos.
 2.  Choose whether to append to an existing knowledge base or build a
-    fresh one.
+    fresh one. (Build a fresh one if first time using in that app launch)
 3.  EduRAG extracts audio and transcribes it with Whisper.
 4.  Transcript segments are merged into larger chunks.
 5.  Chunks are embedded and indexed with FAISS.
